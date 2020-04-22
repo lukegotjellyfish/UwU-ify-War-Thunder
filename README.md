@@ -1,6 +1,6 @@
 # UwU-ify_War_Thunder
 - Put the script in the "Lang" folder in the War Thunder directory
-- Run the scrip
+- Run the script
 ___
 ## Keep in mind
 
