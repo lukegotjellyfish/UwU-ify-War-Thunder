@@ -1,4 +1,5 @@
 # UwU-ify_War_Thunder
+- https://wiki.warthunder.com/Instructions_for_the_user_localizations
 - Put the script in the "Lang" folder in the War Thunder directory
 - Run the script
 ___
