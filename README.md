@@ -4,6 +4,11 @@
 - Run the script
 ___
 ## Keep in mind
+Requirements (py3 modules):
+- re
+- random
+- pandas
+- os
 
 `Will not "translate" text containing the following:`
 - <
