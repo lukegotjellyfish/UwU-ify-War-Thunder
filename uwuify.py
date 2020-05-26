@@ -5,15 +5,25 @@ import pandas
 import os
 
 global faces
-faces = ["^v^", "owo", "UwU", ">w<", "^w^"]
+faces = ["(・`ω´・)", "owo", "UwU", ">w<", "^w^"]
 
 
-#https://honk.moe/tools/owo.html
+#Credit to https://honk.moe/tools/owo.html
+#for the regex (in case i share this idk)
 def regex_hell(text):
+	if ("<color=" in text):
+		match = re.findall("<color=([^<]*)>", text)
+		for x in (match):
+			text = text.replace(x, "#ff89f1")
+		
+		return text
+
 	if ((text == "nan") or (text == "NaN") or (text == "")):
 		return ""
-	if (("http" in text) or ("<" in text) or ("{" in text) or ((" " not in text) and (len(text) > 30))):
+	if (("http" in text) or ("<" in text) or ("{" in text) or ("gaijin.net" in text) or ((" " not in text) and (len(text) > 15)) or (text == "title")):
+		#print("skipped")
 		return text
+
 	text = re.sub("(?:r|l)", "w", text)
 	text = re.sub("(?:R|L)", "W", text)
 	text = re.sub("/n([aeiou])", 'ny$1', text)
@@ -23,8 +33,9 @@ def regex_hell(text):
 	text = re.sub("[!]", " " + faces[random.randint(0,4)], text)
 	return text
 	
+#https://stowe.gaijin.net/yuplay/token_login.php?stoken=
 
-Path = "S:\Steam\steamapps\common\War Thunder\lang\\"
+Path = "C:\Program Files (x86)\Steam\steamapps\common\War Thunder\lang\\"
 filelist = os.listdir(Path)
 
 for i in filelist:
@@ -32,7 +43,7 @@ for i in filelist:
 		csvFile = pandas.read_csv(Path + i, sep=';')
 		csvFile["<English>"] = csvFile["<English>"].apply(lambda x: regex_hell(str(x)))
 		csvFile.to_csv(Path + i, encoding='utf-8', sep=";", index=False)
-		print(csvFile)
+		#print(csvFile)
 input("Finished")
 
 
