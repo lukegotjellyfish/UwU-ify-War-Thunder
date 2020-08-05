@@ -13,9 +13,8 @@ faces = ["(・`ω´・)", "owo", "UwU", ">w<", "^w^"]
 def regex_hell(text):
 	if ("<color=" in text):
 		match = re.findall("<color=([^<]*)>", text)
-		for x in (match):
+		for x in match:
 			text = text.replace(x, "#ff89f1")
-		
 		return text
 
 	if ((text == "nan") or (text == "NaN") or (text == "")):
@@ -32,8 +31,7 @@ def regex_hell(text):
 	text = re.sub("/ove/g", "uv", text)
 	text = re.sub("[!]", " " + faces[random.randint(0,4)], text)
 	return text
-	
-#https://stowe.gaijin.net/yuplay/token_login.php?stoken=
+
 
 Path = "C:\Program Files (x86)\Steam\steamapps\common\War Thunder\lang\\"
 filelist = os.listdir(Path)
