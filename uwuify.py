@@ -59,7 +59,7 @@ for i in filelist:
 	if i.endswith(".csv"):
 		csvFile = pandas.read_csv(Path + "/" + i, sep=';')
 		csvFile["<English>"] = csvFile["<English>"].apply(lambda x: processText(str(x)))
-		csvFile.to_csv(Path + i, encoding='utf-8', sep=";", index=False)
+		csvFile.to_csv(Path + "/" + i, encoding='utf-8', sep=";", index=False)
 		print("File: [" + i + "]")
 		print(csvFile)
 input("Finished")
